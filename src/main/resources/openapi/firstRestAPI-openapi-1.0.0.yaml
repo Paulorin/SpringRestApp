@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: First REST API
+  description: First REST API
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080/'
+tags:
+  - name: users
+    description: Работа с пользователями
+paths:
+  /user:
+    get:
+      tags:
+        - users
+      summary: Получить пользователя по имени
+      parameters:
+        - in: query
+          name: userName
+          schema:
+            type: string
+          description: Имя пользователя
+      responses:
+        "200":
+          description: Пользователь успешно получен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListInfo'
+
+  /users:
+    post:
+      tags:
+        - users
+      summary: Создать нового пользователя
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+        required: true
+      responses:
+        "200":
+          description: Пользователь создан успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdResponse'
+        "400":
+          description: Некорректные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        "409":
+          description: Такой email уже зарегистрирован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+    get:
+      operationId: getUsersList
+      summary: Получить список пользоватлей
+      description: Возвращает список пользователей
+      tags:
+        - users
+#      parameters:
+#        - in: query
+#          name: limit
+#          schema:
+#            type: integer
+#            default: 30
+#            minimum: 1
+#            maximum: 100
+#          description: Количество возвращаемых карточек
+#        - in: query
+#          name: offset
+#          schema:
+#            type: integer
+#            default: 0
+#            minimum: 0
+#          description: Смещение по количеству карточек
+      responses:
+        '200':
+          description: Получен список пользователей
+          content:
+            application/json:
+              schema:
+                type:
+                  array
+                items:
+                  $ref: '#/components/schemas/UserListInfo'
+
+components:
+  schemas:
+    CreateUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Имя пользователя
+        age:
+          type: integer
+          description: Возраст пользователя
+          format: int32
+    IdResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID пользователя
+          format: int64
+    ApiErrorResponse:
+      type: object
+      properties:
+        description:
+          type: string
+        code:
+          type: string
+        exceptionName:
+          type: string
+        exceptionMessage:
+          type: string
+        stacktrace:
+          type: array
+          items:
+            type: string
+
+#Response element got get request
+    UserListInfo:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: Id пользователя
+          format: int32
+        userName:
+          type: string
+          description: Имя пользователя
+        userAge:
+          type: integer
+          description: Возраст пользователя
+          format: int32
