@@ -1,6 +1,6 @@
 package com.example.restapp.service;
 
-import com.example.restapp.Entity.User;
+import com.example.restapp.entity.User;
 import com.example.restapp.model.UserListInfo;
 import com.example.restapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

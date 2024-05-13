@@ -1,4 +1,4 @@
-package com.example.restapp.Entity;
+package com.example.restapp.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

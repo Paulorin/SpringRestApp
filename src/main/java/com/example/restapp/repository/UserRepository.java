@@ -1,7 +1,7 @@
 package com.example.restapp.repository;
 
 
-import com.example.restapp.Entity.User;
+import com.example.restapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
