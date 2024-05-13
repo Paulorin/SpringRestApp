@@ -1,3 +1,4 @@
 Test project with:  
-- swagger generator
+- maven swagger generator
 - ms sql db
+- spring security
