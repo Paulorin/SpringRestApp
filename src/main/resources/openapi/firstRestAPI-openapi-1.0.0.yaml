@@ -6,9 +6,49 @@ info:
 servers:
   - url: 'https://localhost:8080/'
 tags:
+  - name: authorization
+    description: Авторизация
   - name: users
     description: Работа с пользователями
+  - name: books
+    description: Работа с книгами
+  - name: orders
+    description: Работа с заказами
+  - name: delivery
+    description: Работа с доставкой
 paths:
+  /auth/registration:
+#    post:
+#      operationId: performRegistration
+#      tags:
+#        - authorization
+#      summary: Регистрация пользователя
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/RegisterUserRequest'
+#        required: true
+#      responses:
+#        "200":
+#          description: Пользователь успешно создан
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/JWTToken'
+#        "400":
+#          description: Некорректные параметры запроса
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/ApiErrorResponse'
+#        "409":
+#          description: Пользователь с таким email уже зарегистрирован
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/ApiErrorResponse'
+
   /user:
     get:
       tags:
