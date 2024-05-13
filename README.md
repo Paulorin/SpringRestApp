@@ -1,4 +1,4 @@
 Test project with:  
-- maven swagger generator
+- openapi-generator-maven-plugin
 - ms sql db
 - spring security
